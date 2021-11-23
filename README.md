@@ -17,7 +17,7 @@
 * Running Valhalla service
 
 ### Install package
-```
+
 Install service with pip:
 ```
 pip install git+https://github.com/OpertusMundi/transport-service.git
