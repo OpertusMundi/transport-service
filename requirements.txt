@@ -1,0 +1,6 @@
+Flask==1.1.2
+Flask-WTF==0.15.1
+flask-cors==3.0.9
+apispec==4.7.1
+apispec-webframeworks==0.5.2
+requests==2.26.0

@@ -1,0 +1,39 @@
+# vim: set syntax=yaml:
+
+version: '3.6'
+
+services:
+
+  transport:
+    image: "opertusmundi/transport-service:${VERSION}"
+    build:
+      context: .
+      args:
+        VERSION: "${VERSION}"
+
+    volumes:
+    - type: 'bind'
+      source: './logs'
+      target: '/var/local/transport_service/logs'
+    - type: 'bind'
+      source: './secrets'
+      target: '/secrets'
+      read_only: true
+
+    networks:
+    - 'opertusmundi_network'
+
+    ports:
+    - '5000:5000'
+
+    environment:
+      FLASK_ENV: "${FLASK_ENV}"
+      FLASK_DEBUG: "${FLASK_DEBUG}"
+      LOGGING_ROOT_LEVEL: 'INFO'
+      CORS: '*'
+      SECRET_KEY_FILE: '/secrets/secret_key'
+      VALHALLA_URL: ''
+
+networks:
+  opertusmundi_network:
+    external: true
